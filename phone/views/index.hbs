@@ -1,0 +1,322 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Lobster&amp;family=Signika&amp;display=swap'>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <!-- <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8"> -->
+
+    <style>
+        @charset "UTF-8";
+
+        * {
+            position: relative;
+            font-family: "Signika", sans-serif, 微軟正黑體;
+            vertical-align: top;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-color: #aaaeb5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        .phone {
+            width: 270px;
+            padding: 10px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            transition-duration: 0.5s;
+            left: 0px;
+        }
+
+        .top {
+            height: 40px;
+        }
+
+        .top .camera {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .screen {
+            height: 440px;
+            transition-duration: 0.5s;
+            overflow: hidden;
+        }
+
+        .screen .pages {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            font-size: 0px;
+            transition: 0.5s;
+            left: 0;
+        }
+
+        .screen .pages .page {
+            background-color: #1D678F;
+            font-size: initial;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+            /*   框線體積會算在本體內 */
+            white-space: normal;
+            color: #eee;
+            font-size: 12px;
+            left: 0px;
+        }
+
+
+
+        .screen .pages .page h2 {
+            text-align: center;
+            color: #a3a19e;
+            font-size: 20px;
+            margin: 0;
+        }
+
+
+
+        .screen .pages .page:before {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            content: "";
+            display: block;
+            background-color: #92d9de;
+            width: 110%;
+            height: 50px;
+        }
+
+        .screen .pages .page:after {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            content: "";
+            display: block;
+            background-color: #92d9de;
+            width: 110%;
+            height: 30px;
+            margin: -10px;
+        }
+
+
+
+
+
+
+        .bottom {
+            height: 60px;
+        }
+
+        .bottom .button {
+            border: solid 1px rgba(0, 0, 0, 0.2);
+            color: rgba(0, 0, 0, 0.3);
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .bottom .button:hover {
+            background-color: #ddd;
+        }
+
+        
+
+    </style>
+</head>
+
+<body translate="no">
+    <meta name="”viewport”" content="”width=device-width," initial-scale="1.0″" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+    <div class="phone">
+
+        <div class="top">
+            <div class="camera"></div>
+        </div>
+
+        <div class="screen">
+            <div class="pages">
+
+                <div class="page page7">
+                    <h2>討論版</h2>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="button">☐</div>
+            
+        </div>
+
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+{{!--  --}}
+{{!--  --}}
+{{!--  --}}
+{{!--  --}}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    {{!-- <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8"> --}}
+    <style>
+        
+
+        .CRUD {
+            /* text-align:center;  */
+            position: relative;
+
+            display: inline-block;
+            
+            
+            /**/
+
+            left: 505px;
+            padding: 3px;
+            width: 260px;
+        }
+
+        .CRUD.add_area {
+            
+            height: 25px;
+            /**/
+            top: 460px;
+
+        }
+
+        .CRUD.find_area {
+            /**/
+            top: 125px;
+            height: 326px;
+           
+            overflow-x: hidden;
+            /**/
+
+
+            display: flex;
+            flex-direction: column;
+            
+            
+            
+            /* padding:  5px; */
+        }
+
+        .CRUD.find_area ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .item {
+            display: inline-block;
+            position: relative;
+            border-radius: 10px;
+            top: 5px;
+            padding: 2px;
+            background-color: lightblue;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #talking {
+            border: solid 0.5px;
+            left: 10px;
+            border-radius: 2px;
+            /* padding: 2px; */
+            height: 20px;
+            width: 180px;
+        }
+
+        #add_id {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='CRUD add_area'>
+        {{!-- <h1>新增</h1> --}}
+        <form action="http://127.0.0.1:8081/add_one" method="POST">
+            {{!-- First Name: <input type="text" id="add_firstname" name="add_firstname">  
+            <br>
+            <br> --}}
+            <input type="text" id="talking" name="talking" placeholder="請輸入訊息...">
+            {{!-- <br> --}}
+            {{!-- <br> --}}
+            <input type="submit" id="add_id" value="送出">
+        </form>
+    </div>
+
+    <div class="CRUD find_area">
+        {{!-- <h1>查詢</h1> --}}
+
+        {{#each items}}
+        <div class="item">
+            {{!-- <div>first_name： {{first_name}}</div> --}}
+
+            <div>{{talking}}</div>
+
+        </div>
+        {{/each}}
+        <div>
+<script>
+    $('.button').click(
+        function(){
+        window.location.href='http://myweb.scu.edu.tw/~06170211/wallet_test.html'; //跳轉頁面
+        }
+    );
+</script>
+
+
+</body>
+
+</html>
