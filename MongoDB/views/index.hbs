@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8">
+
+</head>
+<body>
+
+    <div class='CRUD add_area'>
+        {{!-- <h1>新增</h1> --}}
+        <form action="http://127.0.0.1:8081/add_one" method="POST">
+            {{!-- First Name: <input type="text" id="add_firstname" name="add_firstname">  
+            <br>
+            <br> --}}
+            <input type="text" id="talking" name="talking" placeholder="請輸入訊息...">
+            {{!-- <br> --}}
+            {{!-- <br> --}}
+            <input type="submit" id="add_id" value="送出">
+        </form>    
+    </div>
+   
+    <div class="CRUD find_area">
+        {{!-- <h1>查詢</h1> --}}
+
+        {{#each items}}
+        <div class="item">
+            {{!-- <div>first_name： {{first_name}}</div> --}}
+    
+            <div>{{talking}}</div>
+    
+        </div>
+        {{/each}}
+    <div>
+
+</body>
+</html>
