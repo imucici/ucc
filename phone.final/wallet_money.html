@@ -1,0 +1,297 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lobster&amp;family=Signika&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8"> -->
+
+    <style>
+      @charset "UTF-8";
+      * {
+        position: relative;
+        font-family: "Signika", sans-serif, 微軟正黑體;
+        vertical-align: top;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        background-color: #aaaeb5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .phone {
+        width: 270px;
+        padding: 10px;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        transition-duration: 0.5s;
+        left: 0px;
+      }
+
+      .top {
+        height: 40px;
+      }
+      .top .camera {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .screen {
+        height: 440px;
+        transition-duration: 0.5s;
+        overflow: hidden;
+      }
+      .screen .pages {
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        font-size: 0px;
+        transition: 0.5s;
+        left: 0;
+      }
+      .screen .pages .page {
+        background-color: #1d678f;
+        font-size: initial;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+        /*   框線體積會算在本體內 */
+        white-space: normal;
+        color: #eee;
+        font-size: 12px;
+        left: 0px;
+      }
+      
+      .screen .pages .page h2 {
+        text-align: center;
+        color: #a3a19e;
+        font-size: 20px;
+        margin: 0;
+      }
+      
+      .screen .pages .page:before {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: "";
+        display: block;
+        background-color: #92d9de;
+        width: 110%;
+        height: 50px;
+      }
+      .screen .pages .page:after {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        content: "";
+        display: block;
+        background-color: #92d9de;
+        width: 110%;
+        height: 30px;
+        margin: -10px;
+      }
+
+      .bottom {
+        height: 60px;
+      }
+      .bottom .button {
+        border: solid 1px rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.3);
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .bottom .button:hover {
+        background-color: #ddd;
+      }
+      
+
+      .gopaybtn {
+        border: solid 1px;
+        margin-top: -4px;
+        border-radius: 10px;
+        display: inline-block;
+        padding: 10px 10px;
+        cursor: pointer;
+        position: absolute;
+        right: 36%;
+      }
+      .gopaybtn:hover {
+        background-color: #f5e042;
+        color: #222;
+        font-weight: 900;
+      }
+
+      .Sender,
+      .Receiver
+      {
+        position: relative;
+        margin: 20px 0px;
+        font-size: 15px;
+      }
+
+      .Sender {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body translate="no">
+    <meta
+      name="”viewport”"
+      content="”width=device-width,"
+      initial-scale="1.0″"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="cookieUtility.js"></script>
+
+    <div class="phone">
+      <div class="top">
+        <div class="camera"></div>
+      </div>
+
+      <div class="screen">
+        <div class="pages">
+          <div class="page page4">
+            <h2>轉帳(顯示當筆交易明細)</h2>
+
+            <div class="Sender">
+              Sender : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+              <input
+                id="sen"
+                type="text"
+                name="sender"
+                placeholder="ex : imucici"
+              />
+            </div>
+
+            <div class="Receiver">
+              Receiver : &nbsp &nbsp &nbsp &nbsp &nbsp
+              <input
+                id="rev"
+                type="text"
+                name="receiver"
+                placeholder="ex : imucici"
+              />
+            </div>
+
+            
+
+            <div class="gopaybtn" onclick="pay()">GoPay !</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="button">☐</div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script id="rendered-js">
+      $(".button").click(function () {
+        window.location.href =
+          "wallet_things.html"; //跳轉頁面
+      });
+
+      // send_token api
+
+      function pay() {
+        var sen = document.getElementById("sen").value;
+        var rev = document.getElementById("rev").value;
+        var balance_url = "http://3.87.137.58:8888/get_balance?user=" + sen; //小柏0629
+        var money = get_all_tokens_by_user(balance_url);
+        var api = CookieValue();
+        var data = {
+          sen: sen,
+          rev: rev,
+          method: "2",
+          description: "Light token",
+          txn:
+            "IJNLOFEEXPFKMWHARQMR9GEXHJKYUHDRNP9JBPTISLMQHEFZSBDE9GQKDTRTVQRFONRGQWUUZM9SZ9999",
+        };
+
+        console.log(data);
+        // alert(JSON.stringify(dataset));
+
+        $.ajax({
+          url: "http://3.87.137.58:8888/send_token",
+          type: "POST",
+
+          headers: {
+            contentType: "application/json;",
+            "X-API-Key": api,
+          },
+          contentType: "application/json;",
+          data: JSON.stringify(data),
+          success: function (result) {
+            alert(result);
+          },
+          error: function (error) {
+            alert(error);
+          },
+        });
+
+        $("#sen").val("");
+        $("#rev").val("");
+        
+      }
+
+      function get_all_tokens_by_user(url) {
+        $.ajax({
+          url: url,
+          type: "get",
+          async: true,
+          success: function (res) {
+            //res應該是會拿到token hash
+            list_balance = res.split("\n"); //token hash的list
+            //generate_table(list_balance);
+            return list_balance[0];
+          },
+          error: function (res) {
+            return false;
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
