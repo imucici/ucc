@@ -12,3 +12,8 @@
 1. 主檔: wallet_test.html
 2. views資料夾有index.hbs、layout.hbs
 3. app.js [啟動服務 : node app.js]
+
+==========
+記住使用者帳密:cookie
+
+1. cookieUtility.js
