@@ -1,0 +1,252 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Lobster&amp;family=Signika&amp;display=swap'>
+<link rel="stylesheet" href="https://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<!-- <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8"> -->
+
+<style>
+@charset "UTF-8";
+* {
+  position: relative;
+  font-family: "Signika", sans-serif, 微軟正黑體;
+  vertical-align: top;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #aaaeb5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.phone {
+  width: 270px;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+  left: 0px;
+}
+
+.top {
+  height: 40px;
+}
+.top .camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.screen {
+  height: 440px;
+  transition-duration: 0.5s;
+  overflow: hidden;
+}
+.screen .pages {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  font-size: 0px;
+  transition: 0.5s;
+  left: 0;
+}
+.screen .pages .page {
+  background-color: #1D678F;
+  font-size: initial;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  /*   框線體積會算在本體內 */
+  white-space: normal;
+  color: #eee;
+  font-size: 12px;
+  left: 0px;
+}
+.screen .pages .page p {
+  margin-top: 10px;
+  letter-spacing: 2px;
+  line-height: 45px;
+  font-size: 50px;
+  color: #34b7eb;
+  left: 10px;
+  text-shadow: 0.1em 0.1em #f3f3f3;
+  font-weight: 900;
+}
+.screen .pages .page h2 {
+  text-align: center;
+  color: #a3a19e;
+  font-size: 20px;
+  margin: 0;
+}
+
+.screen .pages .page:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  content: "";
+  display: block;
+  background-color: #92d9de;
+  width: 110%;
+  height: 50px;
+}
+.screen .pages .page:after {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  content: "";
+  display: block;
+  background-color: #92d9de;
+  width: 110%;
+  height: 30px;
+  margin: -10px;
+}
+
+.bottom {
+  height: 60px;
+}
+.bottom .button {
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.3);
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cookiebtn, .table.table-striped.table-bordered.table-rwd{
+  opacity : 0
+}
+
+
+.text{
+  position: absolute;
+  top : 1px;
+  border: solid 1px white;
+  padding: 5px;
+
+}
+
+</style>
+</head>
+<body translate="no">
+<meta name="”viewport”" content="”width=device-width," initial-scale="1.0″" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="cookieUtility.js"></script>
+
+<div class="phone">
+
+  <div class="top">
+    <div class="camera"></div>
+  </div>
+
+  <div class="screen">
+    <div class="pages">
+      
+      <div class="page page6">
+        <h2>我的帳戶</h2>
+        <br />
+        <form>
+          
+          <input type="button" class="cookiebtn" value="查看餘額"
+            onClick="document.cookie=escape(cookieName.value)+'='+escape(cookieValue.value); history.go(0)" />
+          <div>
+            <!--放token hash的table-->
+            <table class="table table-striped table-bordered table-rwd" id="token_table"></table>
+      
+            <!-- 放剩下多少錢的文字-->
+            <div class="text">
+              <a id="text"> </a>
+            </div>
+          </div>
+      </div>
+      
+
+
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="button">☐</div>
+  </div>
+
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>
+<script>
+    $('.button').click(
+        function () {
+            window.location.href = 'wallet_things.html'; //跳轉頁面
+        }
+    );
+        // 6/27小柏新增
+        //user = document.getElementById("username").value;
+
+
+        var balance_url = "http://3.87.137.58:8888/get_balance?user=" + CookieName();
+        // get balance的api
+        get_all_tokens_by_user(balance_url); //static_js/req_all_tokens.js裡的fuction
+
+        function generate_table(list_balance) {
+          var table = document.getElementById("token_table"); //顯示token hash的table
+          var text = document.getElementById("text"); //顯示還剩多少的文字
+          for (index = 0; index < list_balance.length; index++) {
+            var row = table.insertRow(0);
+            row.innerHTML =
+              "<a href='" +
+              "https://thetangle.org/transaction/" +
+              list_balance[index] +
+              "'>" +
+              list_balance[index].substr(1, 15) +
+              " ..." +
+              " </a>"; // 會顯示hash的前15個字母在網頁上
+          }
+          text.innerHTML = "您剩下" + list_balance.length + "元";
+        }
+
+        function get_all_tokens_by_user(url) {
+          $.ajax({
+            url: url,
+            type: "get",
+            async: true,
+            success: function (res) {
+              //res應該是會拿到token hash
+              list_balance = res.split("\n"); //token hash的list
+              generate_table(list_balance);
+              return true;
+            },
+            error: function (res) {
+              return false;
+            },
+          });
+        }
+
+
+</script>
+</body>
+</html>
