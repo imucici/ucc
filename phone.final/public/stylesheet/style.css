@@ -1,0 +1,71 @@
+* html, body {
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+.CRUD{
+    /* text-align:center;  */
+    display: inline-block;
+    background-color: lightblue;
+    border: solid 2px grey;
+    border-radius: 5px;
+    /**/
+    
+    
+    padding: 3px;
+    width: 240px;
+}
+
+.CRUD.add_area{
+    position: absolute;
+    height: 25px;
+    /**/
+    left: 400px;
+    top : 450px;
+    /* bottom : 30px; */
+    
+}
+.CRUD.find_area{
+    /**/
+    position: absolute;
+    height: 340px;
+    top: 100px;
+    /* overflow: scroll; */
+    overflow-x: hidden; 
+    /**/
+    left :  400px;
+    
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    border: solid 2px grey;
+    border-radius: 5px;
+    /* padding:  5px; */
+}
+.CRUD.find_area ::-webkit-scrollbar {
+    display:none;
+}
+
+.item{
+    display: inline-block;
+    position: relative;
+    
+    top: 5px;
+    padding: 2px;
+    background-color: grey;
+    margin: 5px;
+    padding: 5px;
+}
+
+#talking{
+    border : solid 0.5px;
+    margin: 2px;
+    /* padding: 2px; */
+    width: 175px;
+}
+
+#add_id{
+    margin-left: 5px;
+}
