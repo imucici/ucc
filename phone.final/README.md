@@ -7,7 +7,8 @@
 ===========
 
 討論版_mongodb(node.js)
-{css 包在各檔中}
+
+{css 包在各檔中，拆開則放public}
 
 1. 主檔: wallet_test.html
 2. views資料夾有index.hbs、layout.hbs
