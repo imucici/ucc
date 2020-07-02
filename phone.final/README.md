@@ -11,7 +11,7 @@
 {css 包在各檔中，拆開則放public}
 
 1. 主檔: wallet_test.html
-2. views資料夾有index.hbs、layout.hbs
+2. 模板文件所在目錄:views資料夾的index.hbs、layout.hbs
 3. app.js [啟動服務 : node app.js]
 
 ==========
