@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{!-- <link rel="stylesheet" type="text/css" href="public/stylesheet/style.css" charset="utf-8"> --}}
+<style>
+    * html,
+    body {
+        position: relative;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .CRUD {
+        display: inline-block;
+        left : 505px;
+        padding: 3px;
+        width: 40px;
+    }
+
+    .CRUD.add_area {
+        position: absolute;
+        height: 25px;
+        top: 450px;
+
+    }
+
+    .CRUD.find_area {
+        position: absolute;
+        height: 340px;
+        top: 100px;
+        /* overflow: scroll; */
+        overflow-x: hidden;
+
+        display: flex;
+        flex-direction: column;
+        
+        
+        /* padding:  5px; */
+    }
+
+    .CRUD.find_area ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .item {
+        display: inline-block;
+        position: relative;
+        border-radius: 10px;
+        top: 5px;
+        padding: 2px;
+        background-color: lightblue;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    #talking {
+        border: solid 0.5px;
+        border-radius: 2px;
+        left: 10px;
+        /* padding: 2px; */
+        height: 20px;
+        width: 180px;
+    }
+
+    #add_id {
+        margin-left: 5px;
+    }
+</style>
+</head>
+<body>
+    {{{body}}}
+    
+
+<script>
+    $('.button').click(
+        function(){
+        window.location.href='http://myweb.scu.edu.tw/~06170211/wallet_test.html'; //跳轉頁面
+        }
+    );
+</script>    
+</body>
+</html>
