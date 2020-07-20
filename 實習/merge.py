@@ -125,32 +125,47 @@ def update_graph(xaxis_column_name, yaxis_column_name,
     return fig_4
 
 # fig5
-df_5 = px.data.gapminder().query("year == 2007").query("continent == 'Europe'")
-text_5 = ''' 圓餅圖'''
-fig_5 = px.pie(df_5, values='pop', names='country') ## names -> 側邊提示列
-                
-#### fig.update_traces()參數 ####
+text_5 = '圓餅圖'
+df_5 = px.data.gapminder()
+available_continent = df_5['continent'].unique()
 
-## 1. textinfo='' ->  設定pie內顯示的內容(label/percent/value)
+### 裝飾器和func的參數 之間的順序必須一致!!!!!!!!
+@app.callback(
+    Output('pie-graphic', 'figure'),
+    [Input('continent_type', 'value'),
+     Input('year_slider', 'value')])
+def update_graph(continent_type,year_slider):
+    
+    dff = df_5[df_5['year'] == year_slider]
+    dff = dff[dff['continent']==continent_type]
+    fig = px.pie(dff, values='pop', names='country')## names -> 側邊提示列
+    
+    #### fig.update_traces()參數 ####
 
-## 2. hoverinfo='' -> 設定hover時顯示的內容(label/percent/value)
+    ## 1. textinfo='' ->  設定pie內顯示的內容(label/percent/value)
 
-## 3. insidetextorientation='' -> 設定pie內顯示內容的排列方向(horizontal/radial/tangential)
+    ## 2. hoverinfo='' -> 設定hover時顯示的內容(label/percent/value)
 
+    ## 3. insidetextorientation='' -> 設定pie內顯示內容的排列方向(horizontal/radial/tangential)
 
-fig_5.update_traces(hoverinfo='label+value', textfont_size=20,
-                    textposition='inside',textinfo='label+percent',
-                    insidetextorientation = 'radial',
-                    marker=dict(line=dict(color='white', width=2)))
+    ############
+    fig.update_traces(hoverinfo='label+value', textfont_size=12,
+                        textposition='inside',textinfo='label+percent',
+                        insidetextorientation = 'horizontal',
+                        marker=dict(line=dict(color='white', width=2)))
+    ############
+    
+    #### fig.update_layout()參數 ####
+    ## 1. uniformtext_minsize -> 設定pie內顯示內容的文字大小統一為xx
+    ## 2. uniformtext_mode='hide' -> 若pie空間不夠，textinfo則不顯示
+    #######################
+    fig.update_layout(uniformtext_minsize=12, uniformtext_mode='hide',
+                    margin={'l': 40, 'b': 40, 't': 15, 'r': 0},
+                    plot_bgcolor=colors['background'],paper_bgcolor=colors['background'],font_color=colors['text'],
+                    height=300,width=630)
+    ########################
 
-#### fig.update_layout()參數 ####
-## 1. uniformtext_minsize -> 設定pie內顯示內容的文字大小統一為xx
-## 2. uniformtext_mode='hide' -> 若pie空間不夠，textinfo則不顯示
-fig_5.update_layout(uniformtext_minsize=12, uniformtext_mode='hide',
-                  margin={'l': 40, 'b': 40, 't': 15, 'r': 0},
-                  plot_bgcolor=colors['background'],paper_bgcolor=colors['background'],font_color=colors['text'])
-
-
+    return fig
 ###########################################################################################################
 
 app.layout = html.Div([
@@ -600,16 +615,64 @@ app.layout = html.Div([
         }
 
 
-    )
+    ),
+
+    #################################################
+    html.Div([
+
+        dcc.Markdown(
+            text_5,
+                style={
+                    'textAlign': 'center',
+                    'color': colors['text'],
+                    'fontSize' : '23px',
+                    'fontWeight' : 700
+                }
+        ),
+
+        html.Div([
+
+            html.Div([
+                dcc.Dropdown(   
+                    id='continent_type',
+                    options=[{'label': i, 'value': i} for i in available_continent],
+                    value='Asia',
+                )
+            ],
+            style={'width':'200px','display': 'inline-block'}
+            ),
+
+            html.Div([
+                dcc.Graph(id='pie-graphic'),
+            ]), 
+
+            html.Div([
+                dcc.Slider(
+                    id='year_slider',
+                    min=df_5['year'].min(),
+                    max=df_5['year'].max(),
+                    value=df_5['year'].max(),
+                    marks={str(year): str(year) for year in df_5['year'].unique()},
+                    step=None,
+                    
+                ),
+            ]),
+        
+        ],
+        style={
+                'backgroundColor': colors['background'],
+                'width':'630px',
+                'display': 'inline-block',
+                'position' : 'absolute',
+                'position' : 'absolute',
+                'top': '1110px'
+                }
+        )
 
 
+    ])
 
     
-
-
-
-
-
 
 ],
 
