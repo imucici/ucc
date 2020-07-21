@@ -221,7 +221,8 @@ app.layout = html.Div([
 
                                 hovermode='closest',
                                 paper_bgcolor= '#16243f',
-                                plot_bgcolor='#16243f'
+                                plot_bgcolor='#16243f',
+                                # barmode='stack'
 
                             )
                         }
@@ -262,7 +263,8 @@ app.layout = html.Div([
 
                                 hovermode='closest',
                                 paper_bgcolor= '#16243f',
-                                plot_bgcolor='#16243f'
+                                plot_bgcolor='#16243f',
+                                # barmode='stack'
 
                             )
                         }
@@ -303,7 +305,8 @@ app.layout = html.Div([
 
                                 hovermode='closest',
                                 paper_bgcolor= '#16243f',
-                                plot_bgcolor='#16243f'
+                                plot_bgcolor='#16243f',
+                                # barmode='stack'
 
                             )
                         }
